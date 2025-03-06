@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER TYPER ADVENTURE</title>
+    <link rel="stylesheet" href="src/index.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>SUPER TYPER ADVENTURE</h1>
+        <div id="score-display" class="score">HIGH SCORE: 0</div>
+        
+        <!-- High Score Input UI -->
+        <div id="initials-ui" style="display: none;">
+            <h2 class="rainbow-text">NEW HIGH SCORE!</h2>
+            <p>Enter your initials:</p>
+            <input type="text" id="initials-input" class="input" maxlength="3" placeholder="AAA" style="width: 150px;">
+            <button id="submit-initials" class="input" style="width: 200px;">SUBMIT SCORE</button>
+        </div>
+
+        <!-- Leaderboard -->
+        <div id="leaderboard" class="leaderboard"></div>
+
+        <button id="start-button" class="input">START NEW ADVENTURE</button>
+        
+        <!-- Game UI -->
+        <div id="game-ui" style="display: none;">
+            <div id="current-score" class="score">SCORE: 0</div>
+            <div id="timer" class="timer rainbow-text">Type the phrase!</div>
+            <div id="word" class="word"></div>
+            <input type="text" id="word-input" class="input" autocomplete="off" placeholder="Type the phrase above...">
+        </div>
+    </div>
+
+    <!-- Make sure the script loads after the DOM is ready -->
+    <script defer src="src/game.js"></script>
+</body>
+</html> 
