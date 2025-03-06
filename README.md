@@ -2,7 +2,7 @@
 
 A retro arcade-style typing game with neon lights and fun phrases from video games and Marvel comics! Perfect for kids learning to type while having fun.
 
-![Game Preview](preview.png)
+![Game Preview](preview.webp)
 
 ## Features 🌟
 
