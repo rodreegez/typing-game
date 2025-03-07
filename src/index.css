@@ -268,4 +268,38 @@ button.input:hover {
 
 .rainbow-text {
   animation: rainbow 6s linear infinite;
+}
+
+.score-entry.new-score {
+    animation: highlight-new-score 2s ease-in-out infinite;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.score-entry.new-score::before {
+    content: '►';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--neon-text-color);
+    animation: point-blink 1s infinite;
+}
+
+@keyframes highlight-new-score {
+    0% {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 10px var(--neon-text-color);
+    }
+    50% {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 20px var(--neon-text-color);
+    }
+    100% {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 10px var(--neon-text-color);
+    }
+}
+
+@keyframes point-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 } 

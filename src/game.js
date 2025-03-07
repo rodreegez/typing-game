@@ -74,11 +74,22 @@ class RetroTyper {
 
     loadHighScores() {
         const scores = localStorage.getItem('highScores');
-        return scores ? JSON.parse(scores) : [];
+        // When loading from storage, we don't want any scores marked as new
+        return scores ? JSON.parse(scores).map(score => ({
+            ...score,
+            id: score.id,
+            isNew: false
+        })) : [];
     }
 
     saveHighScores() {
-        localStorage.setItem('highScores', JSON.stringify(this.highScores));
+        // When saving to storage, we don't want to save the 'isNew' flag
+        const scoresForStorage = this.highScores.map(score => ({
+            initials: score.initials,
+            score: score.score,
+            id: score.id
+        }));
+        localStorage.setItem('highScores', JSON.stringify(scoresForStorage));
     }
 
     displayHighScores() {
@@ -87,13 +98,14 @@ class RetroTyper {
         const scoresList = this.highScores
             .sort((a, b) => b.score - a.score)
             .slice(0, 10)
-            .map((score, index) => 
-                `<div class="score-entry">
+            .map((score, index) => {
+                const isNewScore = score.isNew || false;
+                return `<div class="score-entry ${isNewScore ? 'new-score' : ''}">
                     <span class="rank">${index + 1}.</span>
                     <span class="initials">${score.initials}</span>
                     <span class="score-value">${score.score}</span>
-                </div>`
-            )
+                </div>`;
+            })
             .join('');
 
         this.leaderboardDisplay.innerHTML = `
@@ -102,6 +114,12 @@ class RetroTyper {
                 ${scoresList || '<div class="no-scores">No scores yet!</div>'}
             </div>
         `;
+
+        // Clear the 'new' flag after displaying
+        this.highScores = this.highScores.map(score => ({
+            ...score,
+            isNew: false
+        }));
     }
 
     checkHighScore(score) {
@@ -109,7 +127,14 @@ class RetroTyper {
     }
 
     addHighScore(initials, score) {
-        this.highScores.push({ initials, score });
+        const newScoreId = Date.now();
+        // Mark this score as new when adding it
+        this.highScores.push({ 
+            initials, 
+            score, 
+            id: newScoreId,
+            isNew: true 
+        });
         this.highScores.sort((a, b) => b.score - a.score);
         if (this.highScores.length > 10) {
             this.highScores.pop();
