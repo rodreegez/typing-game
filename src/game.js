@@ -146,9 +146,20 @@ class RetroTyper {
     }
 
     calculateScore(timeInSeconds, accuracy) {
+        // Base score for perfect accuracy remains 1000
         let baseScore = 1000 * accuracy;
-        let speedMultiplier = Math.max(0.5, Math.min(2, 15 / timeInSeconds));
-        return Math.round(baseScore * speedMultiplier);
+        
+        // Remove speed multiplier cap - faster typing = higher scores
+        // Using a curve that grows more gradually as speed increases
+        // 15 seconds is now the "par" time (1x multiplier)
+        let speedMultiplier = Math.pow(15 / timeInSeconds, 1.5);
+        
+        // Add length bonus - longer phrases are worth more
+        // Each character over 20 adds 5% to the multiplier
+        let lengthMultiplier = 1 + Math.max(0, (this.currentPhrase.length - 20) * 0.05);
+        
+        // Calculate final score with all multipliers
+        return Math.round(baseScore * speedMultiplier * lengthMultiplier);
     }
 
     updateDisplay() {
@@ -248,7 +259,8 @@ class RetroTyper {
             this.playSound('success');
             this.updateDisplay();
             
-            this.timerDisplay.textContent = `AMAZING! YOU SCORED ${phraseScore} POINTS!`;
+            // Show simple victory message with score
+            this.timerDisplay.innerHTML = `AMAZING! YOU SCORED ${phraseScore} POINTS!`;
             this.wordInput.disabled = true;
             
             // Reset the phrase display to normal on completion
@@ -257,21 +269,15 @@ class RetroTyper {
             if (this.checkHighScore(phraseScore)) {
                 setTimeout(() => {
                     this.showInitialsInput(phraseScore);
-                }, 2000);
+                }, 3000);
             } else {
                 setTimeout(() => {
                     this.gameUI.style.display = 'none';
                     this.startButton.style.display = 'block';
                     this.leaderboardDisplay.style.display = 'block';
                     this.startButton.textContent = 'PLAY AGAIN!';
-                }, 3000);
+                }, 4000);
             }
-        } else {
-            // We don't need this anymore as visual feedback is immediate
-            // const isCorrectSoFar = this.currentPhrase.startsWith(input);
-            // if (!isCorrectSoFar && currentLength > 0) {
-            //     this.playSound('wrong');
-            // }
         }
     }
 }
