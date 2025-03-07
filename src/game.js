@@ -40,6 +40,13 @@ class RetroTyper {
         // Bind event listeners
         if (this.startButton) {
             this.startButton.addEventListener('click', () => this.startGame());
+            
+            // Add keyboard listener for Enter key to start game
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && this.startButton.style.display !== 'none') {
+                    this.startGame();
+                }
+            });
         }
         
         if (this.wordInput) {
