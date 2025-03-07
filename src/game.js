@@ -1,27 +1,27 @@
 const PHRASES = [
-    // Marvel
-    'Spider-Man swings through New York!',
-    'Iron Man saves the day again!',
-    'Thor uses his mighty hammer!',
-    'Hulk smashes the bad guys!',
-    'Captain America throws his shield with power!',
-    'Black Panther protects Wakanda with honor.',
+    // Adventure Heroes
+    'The hero swings between tall buildings!',
+    'A brave knight saves the kingdom!',
+    'Lightning flashes as the wizard appears!',
+    'The mighty warrior defeats the dragon!',
+    'A mysterious hero protects the city!',
+    'The masked champion fights for justice.',
     
-    // Video Games
-    'Super Mario jumps for shiny coins!',
-    'Sonic runs faster than lightning!',
-    'Steve from Minecraft builds a house.',
-    'Roblox is super fun to play!',
-    'The Pokemon trainer catches Pikachu!',
-    'Luigi hunts for spooky ghosts.',
+    // Video Game Themes
+    'Jump over the dangerous obstacles!',
+    'Race through the glowing rings!',
+    'Build a castle in the sandbox world.',
+    'Collect all the shiny gold coins!',
+    'The wizard casts a powerful spell!',
+    'Explore the spooky haunted mansion.',
     
-    // Fun Phrases
-    'Press start to begin your adventure!',
-    'Level up your character with new powers.',
-    'Mario collects all the Power Stars!',
-    'The brave hero defeats the final boss!',
-    'Look, a hidden treasure chest appears!',
-    'Time to unlock special powers and abilities!'
+    // Fun Gaming Phrases
+    'Press start to begin your quest!',
+    'Power up with magical abilities!',
+    'Find the hidden treasure chest!',
+    'The final boss appears ahead!',
+    'A new adventure awaits you!',
+    'Level up and become stronger!'
 ];
 
 class RetroTyper {

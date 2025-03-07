@@ -1,6 +1,6 @@
 # Super Typer Adventure 🎮
 
-A retro arcade-style typing game with neon lights and fun phrases from video games and Marvel comics! Perfect for kids learning to type while having fun.
+A retro arcade-style typing game with neon lights and fun phrases from fantasy adventures and video game worlds! Perfect for kids learning to type while having fun.
 
 ![Game Preview](preview.webp)
 
@@ -17,9 +17,9 @@ A retro arcade-style typing game with neon lights and fun phrases from video gam
   - Leaderboard shows top 10 scores
   - Gold, silver, and bronze highlights for top scores
 - **Fun Phrases**: 
-  - Marvel superhero themes
-  - Video game references
-  - Adventure-style messages
+  - Fantasy adventure themes
+  - Classic gaming moments
+  - Exciting action scenes
 
 ## How to Play 🎯
 
@@ -71,7 +71,7 @@ Works in all modern browsers:
 
 - Font: "Press Start 2P" from Google Fonts
 - Sound effects: Generated using Web Audio API
-- Phrases inspired by Marvel Comics and classic video games
+- Phrases inspired by classic gaming and fantasy adventures
 
 ## License 📄
 
